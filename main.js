@@ -6,23 +6,25 @@ const dotenv = require('dotenv')
 
 dotenv.config();
 
-let config_json = fs.readFileSync( __dirname + '/config.json');
-let config = JSON.parse(config_json);
+let config = {
+    country: JSON.parse(fs.readFileSync( __dirname + '/config/country.json')),
+    notify_list: JSON.parse(fs.readFileSync( __dirname + '/config/notify_list.json'))
+};
 
 const time_zone_offset = process.env.TIME_ZONE_OFFSET
 const line_notify_api_token = process.env.LINE_NOTIFY_API_TOKEN
-const cwb_api_token = process.env.CWB_API_TOKEN
+const cwb_api_key = process.env.CWB_API_KEY
 
 const line_notify_api_endpoint = 'https://notify-api.line.me/api/notify'
 const cwb_api_endpoint = 'https://opendata.cwb.gov.tw/fileapi/v1/opendataapi'
 
 
 function getCountryCodeByCountryName(country_name) {
-    return config['country_name_to_code'][country_name];
+    return config.country['country_name_to_code'][country_name];
 }
 
 async function getCountryWeatherData(country_code) {
-    let url = cwb_api_endpoint + `/${country_code}?Authorization=${cwb_api_token}&format=JSON`;
+    let url = cwb_api_endpoint + `/${country_code}?Authorization=${cwb_api_key}&format=JSON`;
     let res = await axios.get(url);
 
     return res.data;
@@ -109,9 +111,7 @@ function getLocationMessage(location_data) {
 /*------------------------*/
 
 async function main() {
-    let list_to_notify = config.list_to_notify;
-
-    for (item of list_to_notify) {
+    for (item of config.notify_list) {
         const location_name = item.location_name;
         const country_name = item.country_name;
 
