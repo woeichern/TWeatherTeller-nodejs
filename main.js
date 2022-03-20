@@ -94,13 +94,13 @@ function getLocationMessage(location_data) {
     message += `〈氣溫〉\n`;
 
     location_data.temperature.forEach((item) => {
-        message += `[${item.time}]：${item.value}\n`;
+        message += `[${item.time}]：${item.value}°\n`;
     });
 
     message += '\n\n〈降雨機率〉\n';
 
     location_data.rain.forEach((item) => {
-        message += `[${item.time}]：${item.value}\n`;
+        message += `[${item.time}]：${item.value}%\n`;
     });
 
     return message;
