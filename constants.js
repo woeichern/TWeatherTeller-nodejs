@@ -1,0 +1,4 @@
+module.exports = Object.freeze({
+    INDEX_LOCATION_WEATHER_ELEMENT_TEMPERATURE: 0,
+    INDEX_LOCATION_WEATHER_ELEMENT_RAIN: 3,
+});

@@ -1,0 +1,25 @@
+{
+  "name": "tweatherteller-nodejs",
+  "version": "1.0.0",
+  "description": "Taiwan weather teller Node.js",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/woeichern/TWeatherTeller-nodejs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/woeichern/TWeatherTeller-nodejs/issues"
+  },
+  "homepage": "https://github.com/woeichern/TWeatherTeller-nodejs#readme",
+  "dependencies": {
+    "axios": "^0.26.1",
+    "bottender": "^1.5.5",
+    "dotenv": "^16.0.0",
+    "moment": "^2.29.1"
+  }
+}
